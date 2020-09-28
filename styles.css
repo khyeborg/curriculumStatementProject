@@ -1,0 +1,10 @@
+h1 {
+  font-family: Helvetica;
+  text-align: center;
+  font-size: 35px;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
