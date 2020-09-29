@@ -18,6 +18,7 @@ let mainRoom = true, referencesRoomBoolean = false;
 let stateObject;
 
 let aboutMeImage, criticalPedagogyImage, antiRacismImage, referencesImage, starfieldImage, booksImage, backImage;
+let criticalPedagogySignImage, culturallySustainingPedagogySignImage, aboutMeSignImage;
 
 let goBackRectX = 785, goBackRectY = 70, goBackRectWidth = 160, goBackRectHeight = 60;
 let goBackAlpha = 255;
@@ -27,6 +28,10 @@ let referencesAlpha = 255;
 
 let starfieldX, starfieldY1, starfieldY2, starfieldY3;
 let starfieldMoveRate = 2;
+
+// plumbob
+let plumbobArray = [];
+let plumbobCounter1, plumbobCounter2, plumbobCounter3;
 
 function preload() {
 	spritesheet = loadImage("images/spritesheet.png");
@@ -38,10 +43,18 @@ function preload() {
 	starfieldImage = loadImage("images/starfield.png");
 	booksImage = loadImage("images/books.png");
 	backImage = loadImage("images/back.png");
+	criticalPedagogySignImage = loadImage("images/signs/critical_pedagogy_sign.png");
+	culturallySustainingPedagogySignImage = loadImage("images/signs/culturally_sustaining_pedagogy_sign.png");
+	aboutMeSignImage = loadImage("images/signs/about_me_sign.png");
+
+	for (let i = 1; i <= 30; i++) {
+		plumbobArray.push(loadImage("images/plumbob/" + i + ".png"));
+	}
 }
 
 function setup() {
-	createCanvas(960, 500);
+	let canvas = createCanvas(960, 500);
+    canvas.parent('sketch_holder');
 	imageMode(CENTER);
 	rectMode(CENTER);
 	noStroke();
@@ -53,13 +66,19 @@ function setup() {
 	starfieldY1 = -250;
 	starfieldY2 = 250;
 
-	//frameRate(40);
+	// plumbob
+	plumbobCounter1 = Math.floor(random(plumbobArray.length));
+	plumbobCounter2 = Math.floor(random(plumbobArray.length));
+	plumbobCounter3 = Math.floor(random(plumbobArray.length));
+
+	// frameRate(10);
 }
 
 function draw() {
 	// mainRoom stuff
 	if (mainRoom == true) {
 		image(map, width / 2, height / 2);
+		signs();
 		image(myCurrentArray[Math.floor(myCurrentCounter)], myXPos, myYPos, mySize, mySize);
 
 		detectArrowKeys();
@@ -131,6 +150,70 @@ class Room {
 		this.afterSpriteArray = afterSpriteArray;
 		this.afterXPos = afterXPos;
 		this.afterYPos = afterYPos;
+	}
+}
+
+function signs() {
+	image(criticalPedagogySignImage, 100, 340, 120, 152);
+	image(culturallySustainingPedagogySignImage, 880, 335, 200, 177);
+	image(aboutMeSignImage, 565, 298, 70, 65);
+
+	push();
+	// move the origin point
+	translate(103, 296);
+	rotate(radians(-3));
+	fill(255);
+	rect(0, 0, 100, 26);
+	fill(0);
+	textSize(16);
+	rotate(radians(-0.8));
+	text("CRITICAL", -36, 6);
+	pop();
+
+	push();
+	// move the origin point
+	translate(102, 342);
+	rotate(radians(3));
+	fill(255);
+	rect(0, 0, 77, 26);
+	fill(0);
+	textSize(12);
+	text("PEDAGOGY", -34, 5);
+	pop();
+
+	fill(255);
+	rect(878.5, 324, 90, 53);
+	fill(0);
+	textSize(12);
+	text("CULTURALLY", 841, 314);
+	text("SUSTAINING", 842, 329);
+	text("PEDAGOGY", 844, 344);
+
+	fill(255);
+	rect(565, 293, 60, 33);
+	fill(0);
+	textSize(12);
+	text("ABOUT", 545, 290);
+	text("ME", 557, 305);
+
+	image(plumbobArray[Math.floor(plumbobCounter1)], 62, 252, 35, 76);
+	image(plumbobArray[Math.floor(plumbobCounter2)], 927, 225, 35, 76);
+	image(plumbobArray[Math.floor(plumbobCounter3)], 542, 256, 22, 48);
+
+	plumbobCounter1 += 0.2;
+	plumbobCounter2 += 0.2;
+	plumbobCounter3 += 0.2;
+
+	if (Math.floor(plumbobCounter1) == plumbobArray.length) {
+		plumbobCounter1 = 0;
+	}
+
+	if (Math.floor(plumbobCounter2) == plumbobArray.length) {
+		plumbobCounter2 = 0;
+	}
+
+	if (Math.floor(plumbobCounter3) == plumbobArray.length) {
+		plumbobCounter3 = 0;
 	}
 }
 

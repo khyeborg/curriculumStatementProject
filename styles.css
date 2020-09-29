@@ -1,10 +1,51 @@
+body {
+	/*background-color: #F6F6F6;*/
+	font-family: Helvetica;
+	text-align: center;
+}
+
 h1 {
-  font-family: Helvetica;
-  text-align: center;
-  font-size: 35px;
+	font-size: 35px;
+}
+
+.description {	
+  	font-size: 20px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	padding-top: 20px;
+}
+
+.description2 {	
+  	font-size: 17px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	padding-top: 20px;
+}
+
+.bold {
+	padding: 0px 5px;
+	font-weight: bold;
+}
+
+.space {
+	padding: 0px 5px;
+}
+
+#one {
+	color: #569cd6;
+}
+
+#two {
+	color: #4ec9b0;
+}
+
+#three {
+	color: #f6b26b;
 }
 
 canvas {
-  display: block;
-  margin: auto;
+	display: block;
+	margin: auto;
 }
