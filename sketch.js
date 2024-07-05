@@ -36,7 +36,7 @@ let plumbobCounter1, plumbobCounter2, plumbobCounter3;
 function preload() {
 	spritesheet = loadImage("images/spritesheet.png");
 	map = loadImage("images/map.jpg");
-	aboutMeImage = loadImage("images/about_me2.png");
+	aboutMeImage = loadImage("images/about_me.png");
 	criticalPedagogyImage = loadImage("images/critical_pedagogy.png");
 	antiRacismImage = loadImage("images/anti_racism.png");
 	referencesImage = loadImage("images/references.png");
